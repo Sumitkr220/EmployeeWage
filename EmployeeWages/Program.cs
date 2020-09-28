@@ -7,13 +7,18 @@ namespace EmployeeWages
         static void Main(string[] args)
         {
             int Full_Time = 2;
+            int Part_Time = 1;
             int Emp_rate = 20;
             int Emp_Hour, Emp_Wages;
             Random r = new Random();
-            int check = r.Next(1, 3);
+            int check = r.Next(1, 4);
             if (check == Full_Time)
             {
                 Emp_Hour = 8;
+            }
+            else if (check == Part_Time)
+            {
+                Emp_Hour = 4;
             }
             else
                 Emp_Hour = 0;
