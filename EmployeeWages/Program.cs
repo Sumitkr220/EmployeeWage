@@ -12,16 +12,19 @@ namespace EmployeeWages
             int Emp_Hour, Emp_Wages;
             Random r = new Random();
             int check = r.Next(1, 4);
-            if (check == Full_Time)
+
+            switch (check)
             {
-                Emp_Hour = 8;
+                case 2:
+                    Emp_Hour = 8;
+                    break;
+                case 1:
+                    Emp_Hour = 4;
+                    break;
+                default:
+                    Emp_Hour = 0;
+                    break;
             }
-            else if (check == Part_Time)
-            {
-                Emp_Hour = 4;
-            }
-            else
-                Emp_Hour = 0;
 
             Emp_Wages = Emp_Hour * Emp_rate;
             Console.WriteLine("Employee Wages: " + Emp_Wages);
