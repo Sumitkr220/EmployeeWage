@@ -9,10 +9,9 @@ namespace EmployeeWages
         public const int EMP_RATE = 20;
         public const int MAX_WORKING_HOUR = 100;
         public const int MAX_WORKING_DAYS = 20;
-        static void Main(string[] args)
+        public static int ComputeEmpWage()
         {
             int noOfWorkingDays = 0;
-            int empHour = 0;
             int empWages = 0;
             int workingHour = 0;
             Random r = new Random();
@@ -20,6 +19,7 @@ namespace EmployeeWages
             {
                 noOfWorkingDays++;
                 int check = r.Next(1, 4);
+                int empHour;
                 switch (check)
                 {
                     case 2:
@@ -35,7 +35,12 @@ namespace EmployeeWages
                 workingHour += empHour;
                 empWages += empHour * EMP_RATE;
             }
-            Console.WriteLine("Employee Wages: " + empWages);  
+            Console.WriteLine("Employee Wages: " + empWages);
+            return empWages;
+        }
+        static void Main(string[] args)
+        {
+            ComputeEmpWage();  
         }
     }
 }
