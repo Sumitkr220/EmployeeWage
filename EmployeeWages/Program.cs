@@ -6,20 +6,17 @@ namespace EmployeeWages
     {
         public const int FULL_TIME = 2;
         public const int PART_TIME = 1;
-        public const int EMP_RATE = 20;
-        public const int MAX_WORKING_HOUR = 100;
-        public const int MAX_WORKING_DAYS = 20;
-        public static int ComputeEmpWage()
+        public static int ComputeEmpWage(string company,int empRate,int totalOfWorkingDays,int maxHoursPerMonth)
         {
             int noOfWorkingDays = 0;
-            int empWages = 0;
+            int empHour=0;
+            int totalEmpWages = 0;
             int workingHour = 0;
             Random r = new Random();
-            while (noOfWorkingDays < MAX_WORKING_DAYS && workingHour < MAX_WORKING_HOUR)
+            while (noOfWorkingDays < totalOfWorkingDays && workingHour < maxHoursPerMonth)
             {
                 noOfWorkingDays++;
                 int check = r.Next(1, 4);
-                int empHour;
                 switch (check)
                 {
                     case 2:
@@ -33,14 +30,16 @@ namespace EmployeeWages
                         break;
                 }
                 workingHour += empHour;
-                empWages += empHour * EMP_RATE;
+                Console.WriteLine("Days#:" + noOfWorkingDays + " Emp Hrs :" + empHour);
             }
-            Console.WriteLine("Employee Wages: " + empWages);
-            return empWages;
+            totalEmpWages = workingHour * empRate;
+            Console.WriteLine("Total Employee Wage for company : "+company+" is " + totalEmpWages);
+            return totalEmpWages;
         }
         static void Main(string[] args)
         {
-            ComputeEmpWage();  
+            ComputeEmpWage("DMart",20,20,100);
+            ComputeEmpWage("Reliance", 10, 18, 200);
         }
     }
 }
