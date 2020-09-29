@@ -46,7 +46,7 @@ namespace EmployeeWages
                 Console.WriteLine("Days#:" + totalWorkingDays + " Emp Hrs :" + empHrs);
             }
             totalEmpWage = totalEmpHrs *this.empRatePerHour;
-            Console.WriteLine("Total Employee Wage for company : " + company + " is " + totalEmpWage);     
+            Console.WriteLine("Total Employee Wages for company : " + company + " is " + totalEmpWage);     
         }
 
         public string toString()
