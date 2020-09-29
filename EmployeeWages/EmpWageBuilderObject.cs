@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace EmployeeWages
@@ -9,26 +10,36 @@ namespace EmployeeWages
         public const int FULL_TIME = 2;
         public const int PART_TIME = 1;
 
-        private string company;
-        private int empRatePerHour;
-        private int numOfWorkingDays;
-        private int maxHoursPerMonth;
-        private int totalEmpWage;
+        private int numOfCompany = 0;
+        private CompanyEmpWage[] companyEmpWagesArray;
 
-        public EmpWageBuilderObject(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
+        public EmpWageBuilderObject()
         {
-            this.company = company;
-            this.empRatePerHour = empRatePerHour;
-            this.numOfWorkingDays = numOfWorkingDays;
-            this.maxHoursPerMonth = maxHoursPerMonth;
+            this.companyEmpWagesArray = new CompanyEmpWage[5];
         }
+
+        public void addCompanyEmpWage(string company,int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
+        {
+            companyEmpWagesArray[this.numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+            numOfCompany++;
+        }
+
         public void computeEmpWage()
         {
+            for(int i=0;i<numOfCompany;i++)
+            {
+                companyEmpWagesArray[i].setTotalEmpWage(this.computeEmpWage(this.companyEmpWagesArray[i]));
+                Console.WriteLine(this.companyEmpWagesArray[i].toString());
+            }
+        }
+
+        private int computeEmpWage(CompanyEmpWage companyEmpWage)
+        {
             int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
-            Random random = new Random();
-            while (totalEmpHrs <= this.maxHoursPerMonth && totalWorkingDays < this.numOfWorkingDays)
+            while (totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.numOfWorkingDays)
             {
                 totalWorkingDays++;
+                Random random = new Random();
                 int check = random.Next(1, 4);
                 switch (check)
                 {
@@ -45,13 +56,7 @@ namespace EmployeeWages
                 totalEmpHrs += empHrs;
                 Console.WriteLine("Days#:" + totalWorkingDays + " Emp Hrs :" + empHrs);
             }
-            totalEmpWage = totalEmpHrs *this.empRatePerHour;
-            Console.WriteLine("Total Employee Wage for company : " + company + " is " + totalEmpWage);     
-        }
-
-        public string toString()
-        {
-            return "Total Emp Wage for company : " + this.company + " is: " + this.totalEmpWage;
+                return   totalEmpHrs * companyEmpWage.empRatePerHour;
         }
     }
 }

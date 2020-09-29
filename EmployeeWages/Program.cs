@@ -6,12 +6,10 @@ namespace EmployeeWages
     {
         static void Main(string[] args)
         {
-            EmpWageBuilderObject dMart = new EmpWageBuilderObject("DMart", 20, 10, 200);
-            EmpWageBuilderObject reliance = new EmpWageBuilderObject("Reliance", 15, 20, 100);
-            dMart.computeEmpWage();
-            Console.WriteLine(dMart.toString());
-            reliance.computeEmpWage();
-            Console.WriteLine(reliance.toString());
+            EmpWageBuilderObject empWageBuilderObject = new EmpWageBuilderObject();
+            empWageBuilderObject.addCompanyEmpWage("DMart", 20, 15, 100);
+            empWageBuilderObject.addCompanyEmpWage("Reliance", 10, 20, 200);
+            empWageBuilderObject.computeEmpWage();
         }
     }
 }
