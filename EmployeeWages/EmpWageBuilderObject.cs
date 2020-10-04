@@ -15,13 +15,11 @@ namespace EmployeeWages
         {
             this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
         }
-
         public void addCompanyEmpWage(string company,int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
             CompanyEmpWage companyEmpWage = new CompanyEmpWage(company,empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
             this.companyEmpWageList.AddLast(companyEmpWage);
         }
-
         public void computeEmpWage()
         {
             foreach (CompanyEmpWage companyEmpWage in this.companyEmpWageList)
@@ -30,7 +28,6 @@ namespace EmployeeWages
                 Console.WriteLine(companyEmpWage.toString());
             }
         }
-
         private int computeEmpWage(CompanyEmpWage companyEmpWage)
         {
             int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
@@ -54,7 +51,7 @@ namespace EmployeeWages
                 totalEmpHrs += empHrs;
                 Console.WriteLine("Days#:" + totalWorkingDays + " Emp Hrs :" + empHrs);
             }
-                return   totalEmpHrs * companyEmpWage.empRatePerHour;
+                return  totalEmpHrs * companyEmpWage.empRatePerHour;
         }
     }
 }

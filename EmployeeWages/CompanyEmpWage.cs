@@ -19,12 +19,10 @@ namespace EmployeeWages
             this.numOfWorkingDays = numOfWorkingDays;
             this.maxHoursPerMonth = maxHoursPerMonth;
         }
-
         public void setTotalEmpWage(int totalEmpWage)
         {
             this.totalEmpWage = totalEmpWage;
         }
-
         public string toString()
         {
             return "Total Emp Wage for company : " + this.company + " is : " + this.totalEmpWage;
