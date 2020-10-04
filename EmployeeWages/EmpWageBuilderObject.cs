@@ -60,7 +60,7 @@ namespace EmployeeWages
         {
             foreach (KeyValuePair<string, CompanyEmpWage> item in companyToEmpWageMap)
             {
-                Console.WriteLine(item.Key + " " + item.Value.toString());
+                Console.WriteLine(item.Value.toString());
             }
         }
     }
